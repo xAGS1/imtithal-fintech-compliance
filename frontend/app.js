@@ -4,7 +4,7 @@ let results = [];
 
 const sampleCompany = {
   company_id: "fintech-demo-001",
-  company_name: "TamkeenPay",
+  company_name: "AgsPay",
   sector: "FinTech",
   activity_type: "Digital Wallet and Payment Services",
   country: "Saudi Arabia",
