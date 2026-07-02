@@ -1,0 +1,39 @@
+{
+  "company_id": "fintech-demo-001",
+  "company_name": "TamkeenPay",
+  "sector": "FinTech",
+  "activity_type": "Digital Wallet and Payment Services",
+  "country": "Saudi Arabia",
+  "target_frameworks": [
+    "SAMA",
+    "NCA",
+    "PDPL"
+  ],
+  "technical_environment": {
+    "mfa_enabled": true,
+    "encryption_at_rest": true,
+    "encryption_in_transit": true,
+    "audit_logging_enabled": true,
+    "admin_users_count": 4,
+    "least_privilege_reviewed": false,
+    "privacy_policy_published": true,
+    "data_retention_policy_exists": true,
+    "incident_response_plan_exists": false,
+    "backup_enabled": true,
+    "backup_tested_recently": true,
+    "github_branch_protection": true,
+    "ci_cd_security_scan": true,
+    "secrets_scanning_enabled": false,
+    "customer_data_classified": true,
+    "third_party_risk_review": true,
+    "access_review_quarterly": true,
+    "vulnerability_management_exists": true,
+    "security_training_completed": true,
+    "data_breach_notification_process": true,
+    "logs_retention_days": 90,
+    "password_policy_strong": true,
+    "api_rate_limiting_enabled": true,
+    "production_debug_disabled": true,
+    "disaster_recovery_plan_exists": true
+  }
+}

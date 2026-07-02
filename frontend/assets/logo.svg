@@ -1,0 +1,13 @@
+<svg width="520" height="170" viewBox="0 0 520 170" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="170" fill="none"/>
+  <g transform="translate(25,22)">
+    <path d="M62 8 L115 28 L108 81 C104 109 86 128 62 139 C38 128 20 109 16 81 L9 28 Z" fill="none" stroke="#0A2E52" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M41 75 L58 92 L94 54" fill="none" stroke="#0EA5A4" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32" y="39" width="39" height="8" rx="4" fill="#0EA5A4"/>
+    <rect x="32" y="58" width="29" height="8" rx="4" fill="#0EA5A4" opacity=".85"/>
+  </g>
+  <text x="365" y="105" text-anchor="middle" font-family="Tahoma, Arial, sans-serif" font-size="72" font-weight="800" fill="#0A2E52">امتثال</text>
+  <circle cx="305" cy="45" r="8" fill="#0EA5A4"/>
+  <circle cx="335" cy="45" r="8" fill="#0EA5A4"/>
+  <circle cx="365" cy="45" r="8" fill="#0EA5A4"/>
+</svg>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>إمتثال | Imtithal Prototype</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="Imtithal logo"/>
+      <div><h1>امتثال</h1><p>FinTech Compliance Readiness</p></div>
+    </div>
+    <nav class="nav">
+      <button class="active" data-target="dashboard">لوحة التحكم</button>
+      <button data-target="controls">فحوصات الامتثال</button>
+      <button data-target="findings">الفجوات</button>
+      <button data-target="ai">شرح AI</button>
+      <button data-target="data">ملفات JSON</button>
+      <button data-target="report">تقرير التدقيق</button>
+    </nav>
+    <div class="side-note">MVP مبسط مبني على JSON Rules، مناسب لعرض هاكاثون إمتثال.</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="title"><h2>منصة إمتثال</h2><p>قياس جاهزية شركة <span data-company></span> للامتثال المالي والتنظيمي.</p></div>
+      <span class="pill">SAMA / NCA / PDPL</span>
+    </div>
+
+    <section id="dashboard" class="section active">
+      <div class="toolbar">
+        <button id="runBtn" class="btn teal">تشغيل الفحوصات</button>
+        <label class="btn secondary">رفع ملف JSON <input id="jsonUpload" type="file" accept=".json" hidden></label>
+      </div>
+      <div class="grid cards">
+        <div class="card metric"><h3>درجة الجاهزية</h3><div class="num" data-score>84%</div><div class="small">Compliance Readiness</div></div>
+        <div class="card metric"><h3>فحوصات ناجحة</h3><div class="num"><span data-passed></span>/<span data-total></span></div><div class="small">Pass / Total</div></div>
+        <div class="card metric"><h3>فجوات مكتشفة</h3><div class="num" data-failed></div><div class="small">Detected Gaps</div></div>
+        <div class="card metric"><h3>عالية الأولوية</h3><div class="num" data-high></div><div class="small">High Priority Fixes</div></div>
+      </div>
+      <div class="hero">
+        <div class="card scorebox">
+          <div class="ring"><div class="ring-inner"><div><strong data-score>84%</strong><br><span>جاهز للتدقيق</span></div></div></div>
+          <div><h3>ملخص تنفيذي</h3><p class="muted">تم تحويل المتطلبات التنظيمية إلى قواعد قابلة للفحص، ثم تشغيلها على بيانات شركة فنتك تجريبية لاكتشاف الفجوات قبل التدقيق.</p></div>
+        </div>
+        <div class="card checks">
+          <div class="check-row"><span>SAMA</span><span class="status pass">نشط</span></div>
+          <div class="check-row"><span>NCA</span><span class="status pass">نشط</span></div>
+          <div class="check-row"><span>PDPL</span><span class="status pass">نشط</span></div>
+          <div class="check-row"><span>JSON Rules</span><span class="status pass">25 فحص</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="controls" class="section">
+      <h2>فحوصات الامتثال</h2>
+      <table class="table"><thead><tr><th>ID</th><th>الإطار</th><th>المتطلب</th><th>النتيجة</th><th>الخطورة</th></tr></thead><tbody id="controlsBody"></tbody></table>
+    </section>
+
+    <section id="findings" class="section">
+      <h2>الفجوات المكتشفة</h2>
+      <table class="table"><thead><tr><th>ID</th><th>الفجوة</th><th>الخطورة</th><th>الدليل المطلوب</th><th>الإصلاح</th></tr></thead><tbody id="findingsBody"></tbody></table>
+    </section>
+
+    <section id="ai" class="section">
+      <h2>شرح AI للفجوات</h2>
+      <p class="muted">في النسخة الفعلية يمكن ربط هذا الجزء بـ LLM / OpenAI API. هنا تم توليد شرح محاكي ومنظم بناءً على نتيجة كل قاعدة.</p>
+      <div class="grid" id="aiOutput"></div>
+    </section>
+
+    <section id="data" class="section">
+      <h2>ملفات JSON</h2>
+      <div class="timeline">
+        <div class="step"><b>1. Company JSON</b><span>بيانات شركة فنتك تجريبية.</span></div>
+        <div class="step"><b>2. Rules JSON</b><span>قواعد امتثال مستوحاة من SAMA/NCA/PDPL.</span></div>
+        <div class="step"><b>3. Engine</b><span>تحويل القواعد إلى Pass/Fail.</span></div>
+        <div class="step"><b>4. Report</b><span>تقرير جاهزية للتدقيق.</span></div>
+      </div>
+      <div class="hero">
+        <pre class="jsonbox" id="jsonCompany"></pre>
+        <pre class="jsonbox" id="jsonRules"></pre>
+      </div>
+    </section>
+
+    <section id="report" class="section">
+      <div class="toolbar"><button id="printBtn" class="btn">طباعة / PDF</button><button id="downloadBtn" class="btn secondary">تحميل تقرير نصي</button></div>
+      <div class="report" id="reportContent"></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
