@@ -1,62 +1,55 @@
-# إمتثال | Imtithal
+# امتثال | Imtithal
 
-منصة SaaS أولية لشركات الفنتك الناشئة في السعودية، تساعد على قياس الجاهزية التنظيمية والتقنية عبر تحويل متطلبات SAMA / NCA / PDPL إلى فحوصات رقمية.
+Interactive MVP for Saudi fintech compliance readiness.
 
-## ماذا يحتوي المشروع؟
+## What the MVP demonstrates
 
-- واجهة Prototype بسيطة وسهلة الاستخدام.
-- Mock Data لشركة فنتك ناشئة.
-- JSON Rules Engine يحسب Pass / Fail.
-- Dashboard لدرجة الجاهزية والفجوات.
-- AI Explanation محاكي لشرح المخاطر واقتراح الإصلاحات.
-- تقرير جاهزية أولي قابل للطباعة.
-- Backend FastAPI اختياري لتشغيل الفحوصات عبر API.
+- Loads a fintech company profile from JSON.
+- Runs 25 deterministic JSON-based compliance checks.
+- Produces Pass/Fail results, severity, evidence status, and remediation.
+- Calculates a preliminary readiness score.
+- Shows detected gaps and AI-assisted explanations.
+- Generates an audit-readiness summary and downloadable scan results.
 
-## التقنيات المستخدمة
+> The included company profile is **Mock Data** for hackathon demonstration only. The MVP is not a certification tool and does not provide legal or regulatory approval.
 
-- Frontend: HTML/CSS/JavaScript Prototype، قابل للتحويل إلى React / Next.js.
-- Backend: FastAPI.
-- Data Format: JSON.
-- Compliance Engine: JSON Rules Engine.
-- Database planned: PostgreSQL.
-- AI Layer planned: LLM / OpenAI API.
-- Reporting: HTML/PDF-ready Audit Report.
+## Default demo result
 
-## تشغيل الواجهة بسرعة
+- 25 total checks
+- 21 passed
+- 4 gaps
+- 3 high-priority gaps
+- 84% preliminary readiness score
 
-افتح الملف التالي مباشرة:
+## Technology stack
 
-```bash
-frontend/index.html
-```
+- Frontend: HTML, CSS, JavaScript (static and Vercel-ready)
+- Rules layer: JSON Rules Engine
+- Optional backend: FastAPI / Python
+- Data: JSON
+- Reporting: browser Print-to-PDF + TXT/JSON exports
+- Planned AI layer: LLM/OpenAI API for explanation and remediation summaries
 
-أو شغّل سيرفر محلي:
+## Run locally
+
+Open `frontend/index.html`, or run a local static server:
 
 ```bash
 cd frontend
 python -m http.server 8080
 ```
 
-ثم افتح:
+Then open `http://localhost:8080`.
 
-```bash
-http://localhost:8080
+## Deploy to Vercel
+
+Set the Vercel **Root Directory** to `frontend`, use **Framework Preset: Other**, and leave the build command empty.
+
+## Project structure
+
+```text
+frontend/   Interactive MVP
+backend/    Optional FastAPI proof of concept
+data/       Company profile and compliance rules
+assets/     Logo
 ```
-
-## تشغيل Backend الاختياري
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-ثم:
-
-```bash
-http://127.0.0.1:8000/docs
-```
-
-## ملاحظة مهمة
-
-البيانات الداخلية للشركات مثل MFA والصلاحيات والسجلات غير متاحة للعامة، لذلك يستخدم هذا النموذج Mock Data آمنة لمحاكاة بيئة شركة فنتك. الفكرة مستوحاة من مفهوم Compliance-to-Code، لكن هذا النموذج يطبق نسخة MVP مبسطة باستخدام JSON Rules بدل توليد كود كامل.

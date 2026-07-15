@@ -3,94 +3,144 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>إمتثال | Imtithal Prototype</title>
+  <meta name="description" content="إمتثال — نموذج أولي لقياس جاهزية شركات الفنتك للامتثال التنظيمي والتقني."/>
+  <title>إمتثال | Imtithal MVP</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <div class="app">
   <aside class="sidebar">
     <div class="logo">
-      <img src="assets/logo.svg" alt="Imtithal logo"/>
+      <img src="assets/logo.svg" alt="شعار امتثال"/>
       <div><h1>امتثال</h1><p>FinTech Compliance Readiness</p></div>
     </div>
-    <nav class="nav">
+    <nav class="nav" aria-label="التنقل الرئيسي">
       <button class="active" data-target="dashboard">لوحة التحكم</button>
       <button data-target="controls">فحوصات الامتثال</button>
       <button data-target="findings">الفجوات</button>
       <button data-target="ai">شرح AI</button>
       <button data-target="data">ملفات JSON</button>
-      <button data-target="report">تقرير التدقيق</button>
+      <button data-target="report">تقرير الجاهزية</button>
     </nav>
-    <div class="side-note"></div>
+    <div class="side-note">MVP تجريبي — لا يمثل شهادة امتثال أو رأيًا قانونيًا.</div>
   </aside>
 
   <main class="main">
-    <div class="topbar">
-      <div class="title"><h2>منصة إمتثال</h2><p>قياس جاهزية شركة <span data-company></span> للامتثال المالي والتنظيمي.</p></div>
+    <header class="topbar">
+      <div class="title">
+        <h2>منصة إمتثال</h2>
+        <p>قياس جاهزية شركة <strong data-company></strong> للامتثال المالي والتنظيمي.</p>
+      </div>
       <span class="pill">SAMA / NCA / PDPL</span>
+    </header>
+
+    <div class="notice">
+      <strong>بيانات تجريبية:</strong> يستخدم هذا النموذج Mock Data لمحاكاة بيئة شركة فنتك سعودية، ولا يحتوي على بيانات داخلية حقيقية.
     </div>
 
     <section id="dashboard" class="section active">
       <div class="toolbar">
         <button id="runBtn" class="btn teal">تشغيل الفحوصات</button>
-        <label class="btn secondary">رفع ملف JSON <input id="jsonUpload" type="file" accept=".json" hidden></label>
+        <label class="btn secondary">رفع Company JSON<input id="jsonUpload" type="file" accept=".json,application/json" hidden></label>
+        <button id="sampleBtn" class="btn ghost">تحميل نموذج JSON</button>
       </div>
+
       <div class="grid cards">
-        <div class="card metric"><h3>درجة الجاهزية</h3><div class="num" data-score>84%</div><div class="small">Compliance Readiness</div></div>
-        <div class="card metric"><h3>فحوصات ناجحة</h3><div class="num"><span data-passed></span>/<span data-total></span></div><div class="small">Pass / Total</div></div>
-        <div class="card metric"><h3>فجوات مكتشفة</h3><div class="num" data-failed></div><div class="small">Detected Gaps</div></div>
-        <div class="card metric"><h3>عالية الأولوية</h3><div class="num" data-high></div><div class="small">High Priority Fixes</div></div>
+        <div class="card metric"><h3>درجة الجاهزية</h3><div class="num" data-score>—</div><div class="small">Preliminary Readiness Score</div></div>
+        <div class="card metric"><h3>فحوصات ناجحة</h3><div class="num"><span data-passed>—</span>/<span data-total>—</span></div><div class="small">Passed / Total</div></div>
+        <div class="card metric"><h3>فجوات مكتشفة</h3><div class="num" data-failed>—</div><div class="small">Detected Gaps</div></div>
+        <div class="card metric"><h3>عالية الأولوية</h3><div class="num" data-high>—</div><div class="small">High Priority</div></div>
       </div>
+
       <div class="hero">
         <div class="card scorebox">
-          <div class="ring"><div class="ring-inner"><div><strong data-score>84%</strong><br><span>جاهز للتدقيق</span></div></div></div>
-          <div><h3>ملخص تنفيذي</h3><p class="muted">تم تحويل المتطلبات التنظيمية إلى قواعد قابلة للفحص، ثم تشغيلها على بيانات شركة فنتك تجريبية لاكتشاف الفجوات قبل التدقيق.</p></div>
+          <div class="ring"><div class="ring-inner"><div><strong data-score>—</strong><br><span>جاهزية أولية</span></div></div></div>
+          <div>
+            <h3>ملخص تنفيذي</h3>
+            <p class="muted">يحوّل النموذج بيانات الشركة وقواعد الامتثال إلى نتائج قابلة للتفسير: Pass/Fail، مستوى خطورة، دليل مطلوب، وخطوة إصلاح.</p>
+          </div>
         </div>
         <div class="card checks">
-          <div class="check-row"><span>SAMA</span><span class="status pass">نشط</span></div>
-          <div class="check-row"><span>NCA</span><span class="status pass">نشط</span></div>
-          <div class="check-row"><span>PDPL</span><span class="status pass">نشط</span></div>
-          <div class="check-row"><span>JSON Rules</span><span class="status pass">25 فحص</span></div>
+          <div class="check-row"><span>SAMA</span><span class="status pass">مفعّل</span></div>
+          <div class="check-row"><span>NCA</span><span class="status pass">مفعّل</span></div>
+          <div class="check-row"><span>PDPL</span><span class="status pass">مفعّل</span></div>
+          <div class="check-row"><span>JSON Rules</span><span class="status pass"><span data-total>—</span> فحص</span></div>
+        </div>
+      </div>
+
+      <div class="card workflow-card">
+        <h3>كيف تعمل المنصة؟</h3>
+        <div class="timeline compact">
+          <div class="step"><b>1</b><span>تحميل بيانات الشركة بصيغة JSON</span></div>
+          <div class="step"><b>2</b><span>تشغيل قواعد الامتثال</span></div>
+          <div class="step"><b>3</b><span>حساب الجاهزية واكتشاف الفجوات</span></div>
+          <div class="step"><b>4</b><span>توليد تفسير وخطة إصلاح وتقرير</span></div>
         </div>
       </div>
     </section>
 
     <section id="controls" class="section">
-      <h2>فحوصات الامتثال</h2>
-      <table class="table"><thead><tr><th>ID</th><th>الإطار</th><th>المتطلب</th><th>النتيجة</th><th>الخطورة</th></tr></thead><tbody id="controlsBody"></tbody></table>
+      <div class="section-head">
+        <div><h2>فحوصات الامتثال</h2><p class="muted">جميع النتائج محسوبة مباشرة من بيانات الشركة وقواعد JSON.</p></div>
+        <div class="mini-stats"><span><b data-total>—</b> إجمالي</span><span class="ok"><b data-passed>—</b> ناجح</span><span class="bad"><b data-failed>—</b> فاشل</span></div>
+      </div>
+      <div class="filters">
+        <input id="checkSearch" type="search" placeholder="ابحث بالمعرف أو اسم الفحص..."/>
+        <select id="frameworkFilter"><option value="all">كل الأطر</option><option>SAMA</option><option>NCA</option><option>PDPL</option></select>
+        <select id="statusFilter"><option value="all">كل النتائج</option><option value="pass">Pass</option><option value="fail">Fail</option></select>
+        <select id="severityFilter"><option value="all">كل مستويات الخطورة</option><option>High</option><option>Medium</option><option>Low</option></select>
+      </div>
+      <div class="table-wrap">
+        <table class="table"><thead><tr><th>ID</th><th>الإطار</th><th>المتطلب</th><th>النتيجة</th><th>الخطورة</th><th>الدليل</th><th>التفاصيل</th></tr></thead><tbody id="controlsBody"></tbody></table>
+      </div>
+      <p id="controlsEmpty" class="empty" hidden>لا توجد نتائج مطابقة للفلاتر الحالية.</p>
     </section>
 
     <section id="findings" class="section">
-      <h2>الفجوات المكتشفة</h2>
-      <table class="table"><thead><tr><th>ID</th><th>الفجوة</th><th>الخطورة</th><th>الدليل المطلوب</th><th>الإصلاح</th></tr></thead><tbody id="findingsBody"></tbody></table>
+      <div class="section-head"><div><h2>الفجوات المكتشفة</h2><p class="muted">الأولوية مبنية على مستوى الخطورة المحدد في قاعدة الفحص.</p></div></div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>الفجوة</th><th>الإطار</th><th>الخطورة</th><th>الدليل المطلوب</th><th>الإصلاح</th></tr></thead><tbody id="findingsBody"></tbody></table></div>
     </section>
 
     <section id="ai" class="section">
       <h2>شرح AI للفجوات</h2>
-      <p class="muted">في النسخة الفعلية يمكن ربط هذا الجزء بـ LLM / OpenAI API. هنا تم توليد شرح محاكي ومنظم بناءً على نتيجة كل قاعدة.</p>
-      <div class="grid" id="aiOutput"></div>
+      <p class="muted">طبقة الذكاء الاصطناعي تشرح النتائج وتقترح المعالجة؛ قرار Pass/Fail يصدر من قواعد JSON وليس من النموذج اللغوي.</p>
+      <div class="grid ai-grid" id="aiOutput"></div>
     </section>
 
     <section id="data" class="section">
       <h2>ملفات JSON</h2>
       <div class="timeline">
-        <div class="step"><b>1. Company JSON</b><span>بيانات شركة فنتك تجريبية.</span></div>
-        <div class="step"><b>2. Rules JSON</b><span>قواعد امتثال مستوحاة من SAMA/NCA/PDPL.</span></div>
-        <div class="step"><b>3. Engine</b><span>تحويل القواعد إلى Pass/Fail.</span></div>
-        <div class="step"><b>4. Report</b><span>تقرير جاهزية للتدقيق.</span></div>
+        <div class="step"><b>1. Company JSON</b><span>إعدادات شركة فنتك تجريبية.</span></div>
+        <div class="step"><b>2. Rules JSON</b><span>قواعد امتثال مستوحاة من الأطر المستهدفة.</span></div>
+        <div class="step"><b>3. Rules Engine</b><span>مقارنة القيم وإنتاج Pass/Fail.</span></div>
+        <div class="step"><b>4. Report</b><span>ملخص جاهزية وفجوات قابلة للتدقيق.</span></div>
       </div>
-      <div class="hero">
-        <pre class="jsonbox" id="jsonCompany"></pre>
-        <pre class="jsonbox" id="jsonRules"></pre>
+      <div class="hero json-grid">
+        <div><h3>Company JSON</h3><pre class="jsonbox" id="jsonCompany"></pre></div>
+        <div><h3>Rules JSON — عينة</h3><pre class="jsonbox" id="jsonRules"></pre></div>
       </div>
     </section>
 
     <section id="report" class="section">
-      <div class="toolbar"><button id="printBtn" class="btn">طباعة / PDF</button><button id="downloadBtn" class="btn secondary">تحميل تقرير نصي</button></div>
+      <div class="toolbar">
+        <button id="printBtn" class="btn">طباعة / PDF</button>
+        <button id="downloadBtn" class="btn secondary">تحميل تقرير TXT</button>
+        <button id="downloadJsonBtn" class="btn ghost">تحميل النتائج JSON</button>
+      </div>
       <div class="report" id="reportContent"></div>
     </section>
   </main>
 </div>
+
+<div id="ruleModal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" data-close-modal aria-label="إغلاق">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="app.js"></script>
 </body>
 </html>

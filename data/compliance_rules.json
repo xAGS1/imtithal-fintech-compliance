@@ -362,16 +362,16 @@
   {
     "id": "DOC-001",
     "framework": "SAMA / NCA / PDPL",
-    "subject": "توثيق الأدلة للتدقيق",
+    "subject": "حزمة الأدلة جاهزة للتدقيق",
     "condition": "عند تشغيل المنصة أو معالجة بيانات العملاء",
-    "constraint": "يجب أن يكون evidence_pack_ready = False",
+    "constraint": "يجب أن يكون evidence_pack_ready == True",
     "context": "FinTech compliance readiness MVP",
     "field": "evidence_pack_ready",
     "operator": "==",
-    "expected": false,
+    "expected": true,
     "severity": "Low",
-    "evidence": "Evidence Pack Ready",
-    "rationale": "تجهيز الأدلة للمراجعة",
-    "remediation": "اربط الأدلة لكل فحص قبل التدقيق."
+    "evidence": "Evidence pack index",
+    "rationale": "تجميع الأدلة يسهل المراجعة الرسمية",
+    "remediation": "اربط الأدلة بكل فحص قبل التدقيق."
   }
 ]

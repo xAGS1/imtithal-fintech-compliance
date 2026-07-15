@@ -34,6 +34,8 @@
     "password_policy_strong": true,
     "api_rate_limiting_enabled": true,
     "production_debug_disabled": true,
-    "disaster_recovery_plan_exists": true
-  }
+    "disaster_recovery_plan_exists": true,
+    "evidence_pack_ready": false
+  },
+  "data_notice": "Mock data for hackathon demonstration only"
 }
