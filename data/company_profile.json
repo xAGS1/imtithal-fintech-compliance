@@ -1,6 +1,6 @@
 {
-  "company_id": "fintech-demo-001",
-  "company_name": "TamkeenPay",
+  "company_id": "agspay-001",
+  "company_name": "AgsPay",
   "sector": "FinTech",
   "activity_type": "Digital Wallet and Payment Services",
   "country": "Saudi Arabia",
@@ -36,6 +36,5 @@
     "production_debug_disabled": true,
     "disaster_recovery_plan_exists": true,
     "evidence_pack_ready": false
-  },
-  "data_notice": "Mock data for hackathon demonstration only"
+  }
 }

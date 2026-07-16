@@ -5,13 +5,12 @@ let rules = [];
 let results = [];
 
 const sampleCompany = {
-  company_id: 'fintech-demo-001',
-  company_name: 'TamkeenPay',
+  company_id: 'agspay-001',
+  company_name: 'AgsPay',
   sector: 'FinTech',
   activity_type: 'Digital Wallet and Payment Services',
   country: 'Saudi Arabia',
   target_frameworks: ['SAMA', 'NCA', 'PDPL'],
-  data_notice: 'Mock data for hackathon demonstration only',
   technical_environment: {
     mfa_enabled: true,
     encryption_at_rest: true,
@@ -48,7 +47,7 @@ function addRule(id, framework, subject, field, expected, severity, rationale, r
     id, framework, subject,
     condition: id.startsWith('DEV') ? 'عند استخدام مستودع GitHub أو CI/CD' : 'عند تشغيل المنصة أو معالجة بيانات العملاء',
     constraint: `يجب أن يكون ${field} ${operator} ${String(expected)}`,
-    context: 'FinTech compliance readiness MVP',
+    context: 'FinTech compliance readiness',
     field, operator, expected, severity,
     evidence: evidenceLabel || field.replaceAll('_', ' '),
     rationale, remediation
@@ -203,15 +202,14 @@ function renderReport() {
   const failed = results.filter(r => !r.passed);
   const highFindings = failed.filter(r => r.severity === 'High');
   document.querySelector('#reportContent').innerHTML = `
-    <div class="report-header"><div><h2>تقرير جاهزية امتثال أولي</h2><p>Audit-Readiness Summary</p></div><span class="report-score">${s.score}%</span></div>
-    <p class="report-disclaimer">هذا التقرير ناتج عن نموذج أولي وبيانات تجريبية، ولا يمثل شهادة امتثال أو اعتمادًا من جهة تنظيمية.</p>
+    <div class="report-header"><div><h2>تقرير جاهزية الامتثال</h2><p>Compliance Readiness Report</p></div><span class="report-score">${s.score}%</span></div>
     <div class="report-meta">
-      <p><b>الشركة:</b> ${escapeHtml(company.company_name || '—')}</p>
-      <p><b>النشاط:</b> ${escapeHtml(company.activity_type || '—')}</p>
+      <p><b>الشركة:</b> ${escapeHtml(company.company_name || 'غير متوفر')}</p>
+      <p><b>النشاط:</b> ${escapeHtml(company.activity_type || 'غير متوفر')}</p>
       <p><b>الأطر المستهدفة:</b> ${escapeHtml((company.target_frameworks || []).join(' / '))}</p>
     </div>
     <h3>النتيجة التنفيذية</h3>
-    <p>درجة الجاهزية الأولية <b>${s.score}%</b> بناءً على ${s.total} فحصًا. نجح ${s.passed} فحصًا، واكتُشفت ${s.failed} فجوات، منها ${s.high} عالية الأولوية.</p>
+    <p>درجة الجاهزية <b>${s.score}%</b> بناءً على ${s.total} فحصًا. نجح ${s.passed} فحصًا، واكتُشفت ${s.failed} فجوات، منها ${s.high} عالية الأولوية.</p>
     <h3>الفجوات عالية الأولوية</h3>
     ${highFindings.length ? `<ul>${highFindings.map(r => `<li><b>${escapeHtml(r.subject)}:</b> ${escapeHtml(r.remediation)}</li>`).join('')}</ul>` : '<p>لا توجد فجوات عالية الأولوية.</p>'}
     <h3>الخطوة التالية</h3>
@@ -230,7 +228,7 @@ function openRuleModal(ruleId) {
       <div><span>Context</span><strong>${escapeHtml(rule.context)}</strong></div>
       <div><span>Actual value</span><strong><code>${formatValue(rule.actual)}</code></strong></div>
       <div><span>Expected value</span><strong><code>${formatValue(rule.expected)}</code></strong></div>
-      <div><span>Evidence</span><strong>${escapeHtml(rule.evidence)} — ${rule.evidence_status}</strong></div>
+      <div><span>Evidence</span><strong>${escapeHtml(rule.evidence)} | ${rule.evidence_status}</strong></div>
       <div><span>Severity</span><strong><span class="badge ${rule.severity}">${rule.severity}</span></strong></div>
     </div>
     <div class="modal-note"><b>التفسير:</b> ${escapeHtml(rule.rationale)}</div>
@@ -265,18 +263,12 @@ function downloadText(filename, content, type = 'text/plain;charset=utf-8') {
   URL.revokeObjectURL(url);
 }
 
-function downloadReport() {
-  downloadText('imtithal_readiness_report.txt', document.querySelector('#reportContent').innerText);
-}
 
 function downloadResultsJson() {
   const payload = { generated_at: new Date().toISOString(), company, summary: stats(), results };
   downloadText('imtithal_scan_results.json', JSON.stringify(payload, null, 2), 'application/json;charset=utf-8');
 }
 
-function downloadSampleCompany() {
-  downloadText('company_profile_sample.json', JSON.stringify(sampleCompany, null, 2), 'application/json;charset=utf-8');
-}
 
 async function uploadJson(event) {
   const file = event.target.files[0];
@@ -311,10 +303,9 @@ function escapeHtml(value) {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav button').forEach(button => button.addEventListener('click', () => switchSection(button.dataset.target)));
   document.querySelector('#runBtn').addEventListener('click', runChecks);
-  document.querySelector('#sampleBtn').addEventListener('click', downloadSampleCompany);
+  document.querySelector('#resetBtn').addEventListener('click', () => { company = structuredClone(sampleCompany); runChecks(); showToast('تمت استعادة بيانات AgsPay.'); });
   document.querySelector('#printBtn').addEventListener('click', () => window.print());
-  document.querySelector('#downloadBtn').addEventListener('click', downloadReport);
-  document.querySelector('#downloadJsonBtn').addEventListener('click', downloadResultsJson);
+    document.querySelector('#downloadJsonBtn').addEventListener('click', downloadResultsJson);
   document.querySelector('#jsonUpload').addEventListener('change', uploadJson);
   ['#checkSearch', '#frameworkFilter', '#statusFilter', '#severityFilter'].forEach(selector => {
     const element = document.querySelector(selector);

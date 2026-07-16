@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="إمتثال — نموذج أولي لقياس جاهزية شركات الفنتك للامتثال التنظيمي والتقني."/>
-  <title>إمتثال | Imtithal MVP</title>
+  <meta name="description" content="إمتثال لقياس جاهزية شركات الفنتك للامتثال التنظيمي والتقني."/>
+  <title>إمتثال | Imtithal</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
@@ -22,7 +22,6 @@
       <button data-target="data">ملفات JSON</button>
       <button data-target="report">تقرير الجاهزية</button>
     </nav>
-    <div class="side-note">MVP تجريبي — لا يمثل شهادة امتثال أو رأيًا قانونيًا.</div>
   </aside>
 
   <main class="main">
@@ -34,37 +33,34 @@
       <span class="pill">SAMA / NCA / PDPL</span>
     </header>
 
-    <div class="notice">
-      <strong>بيانات تجريبية:</strong> يستخدم هذا النموذج Mock Data لمحاكاة بيئة شركة فنتك سعودية، ولا يحتوي على بيانات داخلية حقيقية.
-    </div>
 
     <section id="dashboard" class="section active">
       <div class="toolbar">
         <button id="runBtn" class="btn teal">تشغيل الفحوصات</button>
         <label class="btn secondary">رفع Company JSON<input id="jsonUpload" type="file" accept=".json,application/json" hidden></label>
-        <button id="sampleBtn" class="btn ghost">تحميل نموذج JSON</button>
+        <button id="resetBtn" class="btn ghost">استعادة بيانات AgsPay</button>
       </div>
 
       <div class="grid cards">
-        <div class="card metric"><h3>درجة الجاهزية</h3><div class="num" data-score>—</div><div class="small">Preliminary Readiness Score</div></div>
-        <div class="card metric"><h3>فحوصات ناجحة</h3><div class="num"><span data-passed>—</span>/<span data-total>—</span></div><div class="small">Passed / Total</div></div>
-        <div class="card metric"><h3>فجوات مكتشفة</h3><div class="num" data-failed>—</div><div class="small">Detected Gaps</div></div>
-        <div class="card metric"><h3>عالية الأولوية</h3><div class="num" data-high>—</div><div class="small">High Priority</div></div>
+        <div class="card metric"><h3>درجة الجاهزية</h3><div class="num" data-score>0%</div><div class="small">Compliance Readiness Score</div></div>
+        <div class="card metric"><h3>فحوصات ناجحة</h3><div class="num"><span data-passed>0</span>/<span data-total>0</span></div><div class="small">Passed / Total</div></div>
+        <div class="card metric"><h3>فجوات مكتشفة</h3><div class="num" data-failed>0</div><div class="small">Detected Gaps</div></div>
+        <div class="card metric"><h3>عالية الأولوية</h3><div class="num" data-high>0</div><div class="small">High Priority</div></div>
       </div>
 
       <div class="hero">
         <div class="card scorebox">
-          <div class="ring"><div class="ring-inner"><div><strong data-score>—</strong><br><span>جاهزية أولية</span></div></div></div>
+          <div class="ring"><div class="ring-inner"><div><strong data-score>0%</strong><br><span>درجة الجاهزية</span></div></div></div>
           <div>
             <h3>ملخص تنفيذي</h3>
-            <p class="muted">يحوّل النموذج بيانات الشركة وقواعد الامتثال إلى نتائج قابلة للتفسير: Pass/Fail، مستوى خطورة، دليل مطلوب، وخطوة إصلاح.</p>
+            <p class="muted">تحوّل المنصة بيانات الشركة وقواعد الامتثال إلى نتائج قابلة للتفسير: Pass/Fail، مستوى خطورة، دليل مطلوب، وخطوة إصلاح.</p>
           </div>
         </div>
         <div class="card checks">
           <div class="check-row"><span>SAMA</span><span class="status pass">مفعّل</span></div>
           <div class="check-row"><span>NCA</span><span class="status pass">مفعّل</span></div>
           <div class="check-row"><span>PDPL</span><span class="status pass">مفعّل</span></div>
-          <div class="check-row"><span>JSON Rules</span><span class="status pass"><span data-total>—</span> فحص</span></div>
+          <div class="check-row"><span>JSON Rules</span><span class="status pass"><span data-total>0</span> فحص</span></div>
         </div>
       </div>
 
@@ -82,7 +78,7 @@
     <section id="controls" class="section">
       <div class="section-head">
         <div><h2>فحوصات الامتثال</h2><p class="muted">جميع النتائج محسوبة مباشرة من بيانات الشركة وقواعد JSON.</p></div>
-        <div class="mini-stats"><span><b data-total>—</b> إجمالي</span><span class="ok"><b data-passed>—</b> ناجح</span><span class="bad"><b data-failed>—</b> فاشل</span></div>
+        <div class="mini-stats"><span><b data-total>0</b> إجمالي</span><span class="ok"><b data-passed>0</b> ناجح</span><span class="bad"><b data-failed>0</b> فاشل</span></div>
       </div>
       <div class="filters">
         <input id="checkSearch" type="search" placeholder="ابحث بالمعرف أو اسم الفحص..."/>
@@ -110,21 +106,20 @@
     <section id="data" class="section">
       <h2>ملفات JSON</h2>
       <div class="timeline">
-        <div class="step"><b>1. Company JSON</b><span>إعدادات شركة فنتك تجريبية.</span></div>
+        <div class="step"><b>1. Company JSON</b><span>إعدادات شركة AgsPay التقنية والتنظيمية.</span></div>
         <div class="step"><b>2. Rules JSON</b><span>قواعد امتثال مستوحاة من الأطر المستهدفة.</span></div>
         <div class="step"><b>3. Rules Engine</b><span>مقارنة القيم وإنتاج Pass/Fail.</span></div>
-        <div class="step"><b>4. Report</b><span>ملخص جاهزية وفجوات قابلة للتدقيق.</span></div>
+        <div class="step"><b>4. Report</b><span>تقرير جاهزية يتضمن النتائج والفجوات والإجراءات المقترحة.</span></div>
       </div>
       <div class="hero json-grid">
         <div><h3>Company JSON</h3><pre class="jsonbox" id="jsonCompany"></pre></div>
-        <div><h3>Rules JSON — عينة</h3><pre class="jsonbox" id="jsonRules"></pre></div>
+        <div><h3>Rules JSON - عينة</h3><pre class="jsonbox" id="jsonRules"></pre></div>
       </div>
     </section>
 
     <section id="report" class="section">
       <div class="toolbar">
         <button id="printBtn" class="btn">طباعة / PDF</button>
-        <button id="downloadBtn" class="btn secondary">تحميل تقرير TXT</button>
         <button id="downloadJsonBtn" class="btn ghost">تحميل النتائج JSON</button>
       </div>
       <div class="report" id="reportContent"></div>

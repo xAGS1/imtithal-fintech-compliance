@@ -31,7 +31,7 @@ def root() -> Dict[str, str]:
     return {
         "name": "Imtithal",
         "status": "running",
-        "message": "FinTech compliance readiness MVP",
+        "message": "FinTech compliance readiness platform",
     }
 
 
